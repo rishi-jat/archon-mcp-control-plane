@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCHON — Autonomous Repository Control</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+</head>
+<body>
+
+    <!-- Background grid -->
+    <div class="bg-grid"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo-group">
+                <div class="logo-shield">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>ARCHON</h1>
+                    <span class="logo-badge">MCP-NATIVE</span>
+                </div>
+            </div>
+            <p class="tagline">Autonomous Repository Control &amp; Hardening Operations Network</p>
+        </div>
+    </header>
+
+    <!-- Search -->
+    <section class="search-section">
+        <div class="search-container">
+            <div class="search-bar">
+                <svg class="search-gh-icon" width="20" height="20" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                </svg>
+                <input type="text" id="repo-input" placeholder="owner/repo" spellcheck="false" autocomplete="off">
+                <button id="analyze-btn" class="analyze-btn">
+                    <svg class="btn-bolt" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                    </svg>
+                    <span>ANALYZE</span>
+                </button>
+            </div>
+            <div class="quick-repos">
+                <span class="quick-label">Try:</span>
+                <button class="quick-btn" data-repo="archestra-ai/archestra">archestra-ai/archestra</button>
+                <button class="quick-btn" data-repo="facebook/react">facebook/react</button>
+                <button class="quick-btn" data-repo="pallets/flask">pallets/flask</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scan bar -->
+    <div class="scan-bar hidden" id="scan-bar"><div class="scan-glow"></div></div>
+
+    <!-- Pipeline -->
+    <section class="pipeline-section" id="pipeline-section">
+        <div class="pipeline">
+            <div class="pipeline-step" data-phase="signal">
+                <div class="step-dot"><div class="dot-core"></div></div>
+                <span class="step-label">Signal</span>
+            </div>
+            <div class="pipeline-line" data-after="signal"><div class="line-fill"></div></div>
+            <div class="pipeline-step" data-phase="correlate">
+                <div class="step-dot"><div class="dot-core"></div></div>
+                <span class="step-label">Correlate</span>
+            </div>
+            <div class="pipeline-line" data-after="correlate"><div class="line-fill"></div></div>
+            <div class="pipeline-step" data-phase="decide">
+                <div class="step-dot"><div class="dot-core"></div></div>
+                <span class="step-label">Decide</span>
+            </div>
+            <div class="pipeline-line" data-after="decide"><div class="line-fill"></div></div>
+            <div class="pipeline-step" data-phase="act">
+                <div class="step-dot"><div class="dot-core"></div></div>
+                <span class="step-label">Act</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overall risk banner -->
+    <div class="risk-banner hidden" id="risk-banner">
+        <div class="risk-banner-inner">
+            <span class="risk-banner-label">OVERALL RISK</span>
+            <span class="risk-banner-level" id="overall-risk-level">—</span>
+        </div>
+    </div>
+
+    <!-- Dashboard main -->
+    <main class="dashboard">
+
+        <!-- Risk cards row -->
+        <div class="card-row">
+            <!-- Health -->
+            <div class="risk-card" id="card-health">
+                <div class="rc-header"><span class="rc-icon">💊</span> HEALTH</div>
+                <div class="rc-body rc-body-ring">
+                    <svg class="health-ring" viewBox="0 0 120 120">
+                        <circle class="ring-track" cx="60" cy="60" r="52"/>
+                        <circle class="ring-value" id="ring-fg" cx="60" cy="60" r="52"/>
+                        <text class="ring-score" id="ring-score" x="60" y="56">—</text>
+                        <text class="ring-grade" id="ring-grade" x="60" y="76">—</text>
+                    </svg>
+                </div>
+                <div class="rc-footer" id="health-recs"></div>
+            </div>
+
+            <!-- Commits -->
+            <div class="risk-card" id="card-commits">
+                <div class="rc-header"><span class="rc-icon">📝</span> COMMITS</div>
+                <div class="rc-body">
+                    <div class="rc-risk-value" id="commit-risk-val">—</div>
+                    <div class="rc-risk-detail" id="commit-risk-detail">Waiting…</div>
+                </div>
+                <div class="rc-footer" id="commit-stats"></div>
+            </div>
+
+            <!-- PRs -->
+            <div class="risk-card" id="card-prs">
+                <div class="rc-header"><span class="rc-icon">🔀</span> PULL REQUESTS</div>
+                <div class="rc-body">
+                    <div class="rc-risk-value" id="pr-risk-val">—</div>
+                    <div class="rc-risk-detail" id="pr-risk-detail">Waiting…</div>
+                </div>
+                <div class="rc-footer" id="pr-stats"></div>
+            </div>
+
+            <!-- Security -->
+            <div class="risk-card" id="card-security">
+                <div class="rc-header"><span class="rc-icon">🛡️</span> SECURITY</div>
+                <div class="rc-body">
+                    <div class="rc-risk-value" id="sec-risk-val">—</div>
+                    <div class="rc-risk-detail" id="sec-risk-detail">Waiting…</div>
+                </div>
+                <div class="rc-footer" id="sec-stats"></div>
+            </div>
+        </div>
+
+        <!-- Two-column: findings + actions -->
+        <div class="twin-col">
+            <!-- Findings -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>Live Findings</h3>
+                    <span class="panel-badge" id="findings-count">0</span>
+                </div>
+                <div class="feed" id="findings-feed">
+                    <div class="feed-empty" id="findings-empty">Findings will stream in during analysis</div>
+                </div>
+            </div>
+
+            <!-- Actions / decision -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>Actions &amp; Decisions</h3>
+                    <span class="panel-badge" id="actions-count">0</span>
+                </div>
+                <div class="feed" id="actions-feed">
+                    <div class="feed-empty" id="actions-empty">Decisions stream here after correlation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Correlation insights -->
+        <div class="panel wide hidden" id="correlation-panel">
+            <div class="panel-header"><h3>Signal Correlation</h3></div>
+            <div id="correlation-body"></div>
+        </div>
+
+        <!-- Reports -->
+        <div class="panel wide hidden" id="report-panel">
+            <div class="panel-header">
+                <h3>Generated Reports</h3>
+                <div class="tab-bar">
+                    <button class="tab active" data-tab="security">Security Audit</button>
+                    <button class="tab" data-tab="operational">Operational Status</button>
+                </div>
+            </div>
+            <div class="report-body" id="report-body"></div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>Built on <a href="https://archestra.ai" target="_blank" rel="noopener">Archestra</a></span>
+        <span class="footer-sep">·</span>
+        <span>2 Fast 2 MCP Hackathon</span>
+        <span class="footer-sep">·</span>
+        <span>WeMakeDevs</span>
+    </footer>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
