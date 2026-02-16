@@ -12,13 +12,6 @@
 
 ---
 
-### Live Dashboard
-
-<p align="center">
-  <a href="https://archon-dashboard.onrender.com/">
-    <img src="assets/dashboard-screenshot.png" alt="ARCHON Command Center Dashboard" width="900">
-  </a>
-</p>
 
 <p align="center"><em>Real-time command center — type any GitHub repo and watch ARCHON analyze it live</em></p>
 
