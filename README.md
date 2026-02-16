@@ -9,19 +9,15 @@
   <a href="https://www.youtube.com/watch?v=xKhBVqppKok"><img src="https://img.shields.io/badge/▶_Demo_Video-YouTube-FF0000?style=for-the-badge&logo=youtube" alt="YouTube Demo"></a>
   <a href="https://www.linkedin.com/posts/rishi-jat_built-archon-autonomous-repository-control-activity-7429130078292439040-a8xu"><img src="https://img.shields.io/badge/📝_Post-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin" alt="LinkedIn Post"></a>
 </p>
-
 ---
 
 
 <p align="center"><em>Real-time command center — type any GitHub repo and watch ARCHON analyze it live</em></p>
 
-| | |
-|---|---|
-| 🚀 **Live Demo** | [archon-dashboard.onrender.com](https://archon-dashboard.onrender.com/) |
-| 🎬 **Demo Video** | [Watch on YouTube](https://www.youtube.com/watch?v=xKhBVqppKok) |
-| 💼 **LinkedIn** | [Project Post](https://www.linkedin.com/posts/rishi-jat_built-archon-autonomous-repository-control-activity-7429130078292439040-a8xu) |
-
 ---
+<p align="center">
+  <img src="images/dashboard-screenshot.png" alt="ARCHON Dashboard Screenshot" width="800" />
+</p>
 
 ## What is ARCHON?
 
