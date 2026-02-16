@@ -4,6 +4,30 @@
 >
 > 🏆 Built for the *2 Fast 2 MCP* Hackathon by WeMakeDevs
 
+<p align="center">
+  <a href="https://archon-dashboard.onrender.com/"><img src="https://img.shields.io/badge/🚀_Live_Demo-archon--dashboard.onrender.com-00d4ff?style=for-the-badge" alt="Live Demo"></a>
+  <a href="https://www.youtube.com/watch?v=xKhBVqppKok"><img src="https://img.shields.io/badge/▶_Demo_Video-YouTube-FF0000?style=for-the-badge&logo=youtube" alt="YouTube Demo"></a>
+  <a href="https://www.linkedin.com/posts/rishi-jat_built-archon-autonomous-repository-control-activity-7429130078292439040-a8xu"><img src="https://img.shields.io/badge/📝_Post-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin" alt="LinkedIn Post"></a>
+</p>
+
+---
+
+### Live Dashboard
+
+<p align="center">
+  <a href="https://archon-dashboard.onrender.com/">
+    <img src="assets/dashboard-screenshot.png" alt="ARCHON Command Center Dashboard" width="900">
+  </a>
+</p>
+
+<p align="center"><em>Real-time command center — type any GitHub repo and watch ARCHON analyze it live</em></p>
+
+| | |
+|---|---|
+| 🚀 **Live Demo** | [archon-dashboard.onrender.com](https://archon-dashboard.onrender.com/) |
+| 🎬 **Demo Video** | [Watch on YouTube](https://www.youtube.com/watch?v=xKhBVqppKok) |
+| 💼 **LinkedIn** | [Project Post](https://www.linkedin.com/posts/rishi-jat_built-archon-autonomous-repository-control-activity-7429130078292439040-a8xu) |
+
 ---
 
 ## What is ARCHON?
