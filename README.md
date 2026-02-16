@@ -16,7 +16,7 @@
 
 ---
 <p align="center">
-  <img src="images/dashboard-screenshot.png" alt="ARCHON Dashboard Screenshot" width="800" />
+  <img src="" alt="ARCHON Dashboard Screenshot" width="800" />
 </p>
 
 ## What is ARCHON?
